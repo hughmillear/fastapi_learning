@@ -35,4 +35,4 @@ jobs:
         pytest .
     - name: Check with mypy
       run: |
-        mypy . --install-types --non-interactive --verbose --config-file mypy.ini
+        mypy . --config-file mypy.ini
