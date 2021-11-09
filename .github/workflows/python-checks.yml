@@ -35,4 +35,4 @@ jobs:
         pytest .
     - name: Check with mypy
       run: |
-        mypy . --config-file mypy.ini
+        mypy . --show-error-codes --config-file mypy.ini
