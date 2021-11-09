@@ -14,7 +14,7 @@ class User(Base):
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)
 
-    items: List['Item'] = relationship("Item", back_populates="owner") # type: ignore[misc]
+    items: List['Item'] = relationship("Item", back_populates="owner") # type: ignore[assignment]
 
 
 class Item(Base):
@@ -25,4 +25,4 @@ class Item(Base):
     description = Column(String, index=True)
     owner_id = Column(Integer, ForeignKey("users.id"))
 
-    owner: 'User' = relationship("User", back_populates="items") # type: ignore[misc]
+    owner: 'User' = relationship("User", back_populates="items") # type: ignore[assignment]
