@@ -14,7 +14,7 @@ class User(Base):
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)
 
-    items = relationship("Item", back_populates="owner")
+    items: Item = relationship("Item", back_populates="owner") # pyright: reportUndefinedVariable=false
 
 
 class Item(Base):
@@ -25,4 +25,4 @@ class Item(Base):
     description = Column(String, index=True)
     owner_id = Column(Integer, ForeignKey("users.id"))
 
-    owner = relationship("User", back_populates="items")
+    owner: User = relationship("User", back_populates="items")
