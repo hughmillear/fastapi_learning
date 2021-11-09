@@ -1,4 +1,4 @@
-import uvicorn
+import uvicorn  # type: ignore
 from fastapi import FastAPI
 
 app = FastAPI()
