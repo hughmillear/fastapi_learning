@@ -16,13 +16,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.8
+    - name: Set up Python 3.8.10
       uses: actions/setup-python@v2
       with:
-        python-version: "3.8"
+        python-version: "3.8.10"
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        if [ -f pre-requirements.txt ]; then pip install --upgrade -r pre-requirements.txt; fi
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         if [ -f dev-requirements.txt ]; then pip install -r dev-requirements.txt; fi
     - name: Lint with Black
@@ -34,4 +35,4 @@ jobs:
         pytest .
     - name: Check with mypy
       run: |
-        mypy .
+        mypy . --show-error-codes --config-file mypy.ini

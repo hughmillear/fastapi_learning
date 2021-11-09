@@ -1,9 +1,17 @@
+import os
+
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from ..database import Base
 from ..main import app, get_db
+
+# ensure db doesn't yet exist so that we start from
+# a consistent state to begin the test with
+TEST_DB_PATH = "./test.db"
+if os.path.isfile(TEST_DB_PATH):
+    os.remove(TEST_DB_PATH)
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
 
