@@ -25,6 +25,7 @@ def get_db():
     finally:
         db.close()
 
+
 # use the direct Session class from sqlalchemy as the type hint
 @app.post("/users/", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
@@ -88,7 +89,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 #     return {"message": "Hello World"}
 
 
-
 # ## middleware
 # import time
 # from fastapi import FastAPI, Request
@@ -102,7 +102,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 #     process_time = time.time() - start_time
 #     response.headers["X-Process-Time"] = str(process_time)
 #     return response
-
 
 
 # ## security - oauth2 with password hassing and jwt bearer tokens
@@ -246,7 +245,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 #     return [{"item_id": "Foo", "owner": current_user.username}]
 
 
-
 # ## security - simple OAuth2 with password and bearer
 # from typing import Optional
 
@@ -340,7 +338,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 #     return current_user
 
 
-
 # ## security - no handling of actual auth
 # from typing import Optional
 
@@ -372,8 +369,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 # @app.get("/users/me")
 # async def read_users_me(current_user: User = Depends(get_current_user)):
 #     return current_user
-
-
 
 
 # ## dependencies with yield
@@ -428,7 +423,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 #         yield db
 
 
-
 # ## dependencies in path operation decorators
 # # initial authorisation implementation example
 # from fastapi import Depends, FastAPI, Header, HTTPException
@@ -462,8 +456,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 #     return [{"username": "Rick"}, {"username": "Morty"}]
 
 
-
-
 # ## sub-dependencies
 # from typing import Optional
 
@@ -489,8 +481,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 #     return {"q_or_cookie": query_or_default}
 
 
-
-
 # ## classes as dependencies
 # from typing import Optional
 
@@ -511,11 +501,11 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 # @app.get("/items/")
 # # async def read_items(commons: CommonQueryParams = Depends(CommonQueryParams)):
-# ## FastAPI provides a shortcut for these cases, 
-# # in where the dependency is specifically a class that 
+# ## FastAPI provides a shortcut for these cases,
+# # in where the dependency is specifically a class that
 # # FastAPI will "call" to create an instance of the class itself.
 # # FastAPI can then use the CommonQueryParams class even without defining it
-# async def read_items(commons: CommonQueryParams = Depends()): 
+# async def read_items(commons: CommonQueryParams = Depends()):
 #     response = {}
 #     if commons.q:
 #         response.update({"q": commons.q})
@@ -570,7 +560,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 #     return updated_item
 
 
-
 # ## json encoder
 # from datetime import datetime
 # from typing import Optional
@@ -595,8 +584,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 # def update_item(id: str, item: Item):
 #     json_compatible_item_data = jsonable_encoder(item)
 #     fake_db[id] = json_compatible_item_data
-
-
 
 
 # ## path operation configuration
@@ -643,8 +630,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 # @app.get("/elements/", tags=["items"], deprecated=True)
 # async def read_elements():
 #     return [{"item_id": "Foo"}]
-
-
 
 
 # ## handling errors
@@ -746,7 +731,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 #     return {"item_id": item_id}
 
 
-
 # ## request forms and files in the same request
 # from fastapi import FastAPI, File, Form, UploadFile
 
@@ -813,8 +797,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 # </body>
 #     """
 #     return HTMLResponse(content=content)
-
-
 
 
 # ## request forms
@@ -929,7 +911,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 #     hashed_password: str
 
 
-
 # def fake_password_hasher(raw_password: str):
 #     return "supersecret" + raw_password
 
@@ -945,8 +926,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 # async def create_user(user_in: UserIn):
 #     user_saved = fake_save_user(user_in)
 #     return user_saved
-
-
 
 
 # ## response model
@@ -994,7 +973,6 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 # @app.post("/user/", response_model=UserOut)
 # async def create_user(user: UserIn):
 #     return user
-
 
 
 # ## headers
