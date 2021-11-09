@@ -1,0 +1,10 @@
+black
+mypy
+flake8
+requests
+pytest
+pytest-cov
+isort
+autoflake
+sqlalchemy[mypy]
+sqlalchemy-stubs
