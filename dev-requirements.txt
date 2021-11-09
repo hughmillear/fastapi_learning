@@ -8,4 +8,3 @@ isort
 autoflake
 sqlalchemy[mypy]
 sqlalchemy-stubs
-aiofiles>=0.7.0
